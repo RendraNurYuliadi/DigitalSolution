@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const links = ['Home','About','Services','Projects','Technologies','Team','FAQ','Contact']
@@ -6,7 +6,37 @@ const links = ['Home','About','Services','Projects','Technologies','Team','FAQ',
 export default function Navbar({ theme, setTheme }){
   const [open,setOpen] = useState(false)
   const [servicesOpen,setServicesOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('Home')
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
+
+  useEffect(() => {
+    const sections = links.map((link) => {
+      const id = link.toLowerCase()
+      return { name: link, el: document.getElementById(id) }
+    }).filter((section) => section.el)
+
+    const onScroll = () => {
+      const scrollPosition = window.scrollY + 120
+      const current = sections.reduce((active, section) => {
+        const top = section.el.offsetTop
+        const height = section.el.offsetHeight
+        if (scrollPosition >= top && scrollPosition < top + height) {
+          return section.name
+        }
+        return active
+      }, 'Home')
+      setActiveLink(current)
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const getLinkClass = (link) => {
+    const isActive = activeLink === link
+    return `relative inline-block py-1 px-1 transition ${isActive ? 'font-semibold text-white border-b-2 border-white' : 'text-silver hover:text-white'}`
+  }
 
   return (
     <motion.header
@@ -20,12 +50,12 @@ export default function Navbar({ theme, setTheme }){
             <span className="font-bold">DS</span>
           </div>
           <div className="hidden md:block">
-            <ul className="flex gap-6 text-sm text-silver items-center">
+            <ul className="flex gap-6 text-sm items-center">
               {links.map(l=> (
                 <li key={l} className="relative">
                   {l === 'Services' ? (
                     <>
-                      <button onClick={()=>setServicesOpen(v=>!v)} className="relative inline-block py-1 px-1 hover:text-white transition">{l}</button>
+                      <button onClick={()=>setServicesOpen(v=>!v)} className={getLinkClass(l)}>{l}</button>
                       {servicesOpen && (
                         <div className="absolute mt-3 right-0 glass rounded-xl p-4 w-56 shadow-glass">
                           <ul className="space-y-2 text-sm text-silver">
@@ -37,7 +67,7 @@ export default function Navbar({ theme, setTheme }){
                       )}
                     </>
                   ) : (
-                    <a href={`#${l.toLowerCase()}`} className="relative inline-block py-1 px-1 hover:text-white transition">{l}</a>
+                    <a href={`#${l.toLowerCase()}`} className={getLinkClass(l)}>{l}</a>
                   )}
                 </li>
               ))}
@@ -58,7 +88,11 @@ export default function Navbar({ theme, setTheme }){
       {open && (
         <motion.div initial={{opacity:0}} animate={{opacity:1}} className="md:hidden mt-2 max-w-6xl mx-auto glass rounded-2xl p-4">
           <ul className="flex flex-col gap-3">
-            {links.map(l=> <li key={l}><a href={`#${l.toLowerCase()}`} className="block py-2">{l}</a></li>)}
+            {links.map(l=> (
+              <li key={l}>
+                <a href={`#${l.toLowerCase()}`} className={`block py-2 ${activeLink === l ? 'font-semibold text-white' : 'text-silver hover:text-white'}`}>{l}</a>
+              </li>
+            ))}
           </ul>
         </motion.div>
       )}

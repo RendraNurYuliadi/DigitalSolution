@@ -1,10 +1,12 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
-export default function About(){
+export default function About({ theme }){
   return (
-    <section id="about" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="about" className="relative overflow-hidden py-20">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.h2 initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-3xl font-bold">About Digisolve Studio</motion.h2>
         <motion.p initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.1}} className="mt-4 text-slate-700 dark:text-slate-300 max-w-3xl text-lg">
           Digisolve Studio adalah startup jasa digital yang menggabungkan technopreneurship, inovasi teknologi, dan layanan custom order untuk mendukung UMKM, mahasiswa, dan bisnis kecil.

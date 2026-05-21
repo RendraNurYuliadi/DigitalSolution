@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const samples = [
   {title:'Rog Store', category:'E-commerce', url:'https://www.figma.com/design/ClUsiVC866SvyeGmw2av7j/Rog-Store?node-id=23-470&t=hxQsOgHjGwtf8mCO-1'},
@@ -10,10 +11,11 @@ const samples = [
   {title:'Sumedang Digital Solution', category:'Agency', url:'https://www.figma.com/design/Kf6FMfp20covdVgx8lYDbx/Prototype---Sumedang-Digital-Solution?node-id=14-10&t=aFJvJYev3Vesqo13-1'}
 ]
 
-export default function SampleProducts(){
+export default function SampleProducts({ theme }){
   return (
-    <section id="samples" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="samples" className="relative overflow-hidden py-20">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-bold">Sample Product Links</h2>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const canvasItems = [
   {label:'Customer Segments', icon:'groups', value:['Mahasiswa','UMKM','Pelaku bisnis kecil','Individu digital']},
@@ -13,10 +14,11 @@ const canvasItems = [
   {label:'Cost Structure', icon:'account_balance_wallet', value:['Tools & software','Internet & operasional','Marketing','Pengembangan skill']}
 ]
 
-export default function BusinessModelCanvas(){
+export default function BusinessModelCanvas({ theme }){
   return (
-    <section id="business-model" className="py-20 bg-black">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="business-model" className="relative overflow-hidden py-20 bg-black">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <h2 className="text-3xl font-bold">Business Model Canvas</h2>
           <p className="text-slate-400 max-w-2xl">Model bisnis Digisolve Studio merangkum layanan desain, web, dan data dengan fokus pada UMKM, mahasiswa, dan pelaku bisnis kecil.</p>

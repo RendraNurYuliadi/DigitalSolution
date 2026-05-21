@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const faqs = [
   {q:'Layanan apa saja?', a:'Design, Web Development, Data & Scraping, Automation, dan lainnya.'},
@@ -9,10 +10,11 @@ const faqs = [
   {q:'Bagaimana sistem order?', a:'Kontak via form atau WhatsApp, kami akan follow up.'}
 ]
 
-export default function FAQ(){
+export default function FAQ({ theme }){
   return (
-    <section id="faq" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="faq" className="relative overflow-hidden py-20">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-bold">FAQ</h2>

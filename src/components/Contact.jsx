@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import BackgroundParticles from './BackgroundParticles'
 
-export default function Contact(){
+export default function Contact({ theme }){
   const [loading,setLoading] = useState(false)
   const [success,setSuccess] = useState(false)
 
@@ -15,8 +16,9 @@ export default function Contact(){
   }
 
   return (
-    <section id="contact" className="py-20">
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="contact" className="relative overflow-hidden py-20">
+      <BackgroundParticles />
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-3xl font-bold">Contact</h2>

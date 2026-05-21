@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const swotData = [
   {title:'Strengths', points:['Layanan lengkap desain, web, dokumen, data','Custom order sesuai kebutuhan','Fokus UMKM dan mahasiswa']},
@@ -8,10 +9,11 @@ const swotData = [
   {title:'Threats', points:['Kompetitor jasa digital besar','Perubahan tren tools digital cepat','Otomatisasi AI berkembang']}
 ]
 
-export default function SWOT(){
+export default function SWOT({ theme }){
   return (
-    <section id="swot" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="swot" className="relative overflow-hidden py-20">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-bold">SWOT Analysis</h2>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const sample = [
   {title:'Rog Store', tag:'ecommerce', img:'https://images.unsplash.com/photo-1513883049090-d0b7439799bf?q=80&w=1600&auto=format&fit=crop', tech:['React','Tailwind'], description:'E-commerce shop experience dengan tampilan premium.'},
@@ -17,8 +18,9 @@ export default function Projects(){
   const list = sample.filter(p=> filter==='all' || p.tag===filter)
 
   return (
-    <section id="projects" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="projects" className="relative overflow-hidden py-20">
+      <BackgroundParticles />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-bold">Projects</h2>

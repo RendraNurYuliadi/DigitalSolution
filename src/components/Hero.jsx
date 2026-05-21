@@ -1,9 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
-export default function Hero(){
+export default function Hero({ theme }){
   return (
-    <section id="home" className="min-h-screen flex items-center pt-24 overflow-hidden">
+    <section id="home" className="relative overflow-hidden min-h-screen flex items-center pt-24">
+      <BackgroundParticles theme={theme} />
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute -left-24 top-1/4 w-72 h-72 rounded-full bg-white/5 blur-3xl" />
         <div className="absolute right-10 top-20 w-60 h-60 rounded-full bg-white/5 blur-3xl" />

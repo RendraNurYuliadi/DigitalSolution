@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const steps = [
   {title:'Order & Briefing', detail:'Klien mengirim permintaan, brief, dan referensi layanan digital.'},
@@ -8,10 +9,11 @@ const steps = [
   {title:'Delivery & Export', detail:'Final file diserahkan, termasuk export CSV/Excel/JSON bila diperlukan.'}
 ]
 
-export default function Process(){
+export default function Process({ theme }){
   return (
-    <section id="process" className="py-20 bg-black">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="process" className="relative overflow-hidden py-20 bg-black">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-bold">How We Work</h2>

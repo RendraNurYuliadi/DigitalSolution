@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const services = [
   {
@@ -19,10 +20,11 @@ const services = [
   }
 ]
 
-export default function Services(){
+export default function Services({ theme }){
   return (
-    <section id="services" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className="relative overflow-hidden py-20">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <h2 className="text-3xl font-bold">Services</h2>
           <p className="text-slate-400 max-w-2xl">Layanan Digisolve Studio mencakup desain, web development, dan data scraping untuk mendukung UMKM, mahasiswa, dan pelaku usaha kecil.</p>

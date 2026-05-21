@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import BackgroundParticles from './BackgroundParticles'
 
 const tech = [
   {name:'HTML', icon:'code'},
@@ -13,10 +14,11 @@ const tech = [
   {name:'Data Scraping', icon:'analytics'}
 ]
 
-export default function Technologies(){
+export default function Technologies({ theme }){
   return (
-    <section id="technologies" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="technologies" className="relative overflow-hidden py-20">
+      <BackgroundParticles theme={theme} />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-bold">Technologies</h2>
