@@ -34,3 +34,5 @@ export default function SWOT({ theme }){
     </section>
   )
 }
+
+// SWOT analysis ini memberikan gambaran menyeluruh tentang posisi Digisolve Studio dalam pasar jasa digital, membantu mengidentifikasi area untuk pengembangan dan strategi mitigasi risiko.
