@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg-matte:#000000;
+  --glass: rgba(255,255,255,0.04);
+  --dark-ash: #141414;
+}
+
+html,body,#root{
+  height:100%;
+}
+
+body{
+  @apply font-poppins text-slate-900 antialiased;
+  background: radial-gradient(circle at 15% 15%, rgba(15,23,42,0.05), transparent), linear-gradient(180deg,#ffffff 0%, #f8fafc 100%);
+  color: #0f172a;
+}
+
+html.dark body{
+  @apply text-white;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.02), transparent), linear-gradient(180deg,#000000 0%, #050505 100%);
+  color: #f8fafc;
+}
+
+.glass{
+  background: rgba(255,255,255,0.80);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(15,23,42,0.08);
+}
+
+.surface{
+  background: rgba(255,255,255,0.94);
+  border: 1px solid rgba(15,23,42,0.08);
+  box-shadow: 0 34px 80px rgba(15,23,42,0.08);
+}
+
+html.dark .glass{
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border-color: rgba(255,255,255,0.08);
+}
+
+html.dark .surface{
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+}
+
+html:not(.dark) .bg-black { background-color: #ffffff !important; }
+html:not(.dark) .text-white { color: #0f172a !important; }
+html:not(.dark) .border-white\/10 { border-color: rgba(15,23,42,0.08) !important; }
+html:not(.dark) .border-white\/20 { border-color: rgba(15,23,42,0.14) !important; }
+html:not(.dark) .glass, html:not(.dark) .glass * { color: inherit !important; }
+html:not(.dark) .shadow-glass { box-shadow: 0 30px 70px rgba(15,23,42,0.10); }
+html:not(.dark) .text-silver { color: #475569 !important; }
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.cursor-follower{
+  position: fixed;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.06);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee{ animation: marquee 18s linear infinite; }
+
+@keyframes floaty { 0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)} }
+.floaty{ animation: floaty 6s ease-in-out infinite; }
+
+@keyframes spotlight { 0%{opacity:0.6}50%{opacity:1}100%{opacity:0.6} }
+.spotlight{ animation: spotlight 8s ease-in-out infinite; }
+
+.reveal-mask{ overflow:hidden; }
+.reveal-mask > *{ transform: translateY(20px); opacity:0; transition: all 0.7s ease; }
+.reveal-mask.in-view > *{ transform: translateY(0); opacity:1; }
+
+.accent-glow{ background: radial-gradient(circle, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); }
+
+
+
